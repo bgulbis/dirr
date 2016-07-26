@@ -1,6 +1,5 @@
 ---
 title: "dirr"
-subtitle: "Data project setup package"
 output: github_document
 ---
 
@@ -14,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-## dirr
+## Purpose
 
 The `dirr` package can be used to set up a data project with default folders. Additionally, utility functions to compress data files are provided.
 

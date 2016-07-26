@@ -2,8 +2,8 @@ dirr
 ================
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-dirr
-----
+Purpose
+-------
 
 The `dirr` package can be used to set up a data project with default folders. Additionally, utility functions to compress data files are provided.
 
