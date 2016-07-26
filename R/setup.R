@@ -10,7 +10,7 @@
 #'
 #' \itemize{
 #'     \item data
-#'     \itemize {
+#'     \itemize{
 #'         \item external - any external data, such as data which was manually
 #'         collected
 #'         \item final - final version of the data used for analysis
