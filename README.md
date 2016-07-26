@@ -33,10 +33,24 @@ libryar(dirr)
 make_dirs()
 ```
 
+#### Output
+
+The following folders are created by `make_dirs`:
+
+-   data/external - any external data, such as data which was manually collected
+-   data/final - final version of the data used for analysis
+-   data/raw - original, raw data sets
+-   data/tidy - tidy version of original data sets
+-   doc - manuscript and related documents
+-   explore - exploratory notebooks and figures
+-   figs - final figures for posters or manuscript
+-   report - notebook containing data analysis
+-   src - R script files used to tidy, transform, and aggregate data into the final data set
+
 ### Compress data files
 
 1.  Load the `dirr` package
-2.  Run the `gzip_files` function to compress all data files in the `data/raw` directory
+2.  Run the `gzip_files` function to compress all data files in the `data/raw` directory, or other specified directory
 
 ``` r
 libryar(dirr)
@@ -44,17 +58,5 @@ libryar(dirr)
 gzip_files()
 ```
 
-Output
-------
-
-The following folders are created by `setup.R`:
-
-1.  data/external - any external data, such as data which was manually collected
-2.  data/final - final version of the data used for analysis
-3.  data/raw - original, raw data sets
-4.  data/tidy - tidy version of original data sets
-5.  doc - manuscript and related documents
-6.  explore - exploratory notebooks and figures
-7.  figs - final figures for posters or manuscript
-8.  report - notebook containing data analysis
-9.  src - R script files used to tidy, transform, and aggregate data into the final data set
+-   Use the `pattern` argument to specify only certain files for zipping
+-   Use `ungzip_files` to uncompress all data files
