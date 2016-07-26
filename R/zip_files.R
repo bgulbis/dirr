@@ -34,7 +34,7 @@ gzip_files <- function(dir.name = "data/raw", pattern = NULL) {
 #' is gzipped.
 #'
 #' @param dir.name A string with the name of the directory containing the data
-#'   files. Defaults to the current working directory.
+#'   files. Defaults to the \code{data/raw} directory.
 #' @param pattern An optional regular expression. Only file names which match
 #'   the regular expression will be compressed.
 #'
@@ -42,7 +42,7 @@ gzip_files <- function(dir.name = "data/raw", pattern = NULL) {
 #'   expressions
 #'
 #' @export
-ungzip_files <- function(dir.name = getwd(), pattern = NULL) {
+ungzip_files <- function(dir.name = "data/raw", pattern = NULL) {
     comp.files <- list.files(dir.name, pattern = pattern, full.names=TRUE)
     lapply(comp.files, function(x)
         if (R.utils::isGzipped(x)) R.utils::decompressFile(x,ext = "gz",
