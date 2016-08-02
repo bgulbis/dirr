@@ -20,6 +20,7 @@
 #'     \item doc - manuscript and related documents
 #'     \item explore - exploratory notebooks and figures
 #'     \item figs - final figures for posters or manuscript
+#'     \item irb - IRB protocol and approval documents
 #'     \item report - notebook containing data analysis
 #'     \item src - R script files used to tidy, transform, and aggregate data
 #'     into the final data set
@@ -37,7 +38,8 @@ make_dirs <- function() {
         "figs",
         "doc",
         "report",
-        "src"
+        "src",
+        "irb"
     )
 
     lapply(list_dirs, function(y) if (!dir.exists(y)) dir.create(y))
