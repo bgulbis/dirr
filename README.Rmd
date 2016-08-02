@@ -22,7 +22,8 @@ The `dirr` package can be used to set up a data project with default folders. Ad
 The `dirr` package can be installed from GitHub using the `devtools` package and the following commands:
 
 ```{r, eval = FALSE}
-libryar(devtools)
+# install.packages("devtools")
+library(devtools)
 
 install_github("bgulbis\dirr")
 ```
