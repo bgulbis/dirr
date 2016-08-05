@@ -13,7 +13,8 @@ Installation
 The `dirr` package can be installed from GitHub using the `devtools` package and the following commands:
 
 ``` r
-libryar(devtools)
+# install.packages("devtools")
+library(devtools)
 
 install_github("bgulbis\dirr")
 ```
