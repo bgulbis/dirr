@@ -55,7 +55,7 @@ The following folders are created by `make_dirs`:
 2.  Run the `gzip_files` function to compress all data files in the `data/raw` directory, or other specified directory
 
 ``` r
-libryar(dirr)
+library(dirr)
 
 gzip_files()
 ```

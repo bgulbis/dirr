@@ -63,7 +63,7 @@ The following folders are created by `make_dirs`:
 1. Run the `gzip_files` function to compress all data files in the `data/raw` directory, or other specified directory
 
 ```{r, eval = FALSE}
-libryar(dirr)
+library(dirr)
 
 gzip_files()
 ```
