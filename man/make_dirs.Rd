@@ -27,6 +27,7 @@ facilitate a data project. The directories created are:
     \item explore - exploratory notebooks and figures
     \item figs - final figures for posters or manuscript
     \item irb - IRB protocol and approval documents
+    \item ref - reference articles for the project
     \item report - notebook containing data analysis
     \item src - R script files used to tidy, transform, and aggregate data
     into the final data set

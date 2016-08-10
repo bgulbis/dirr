@@ -1,7 +1,7 @@
 Package: dirr
 Type: Package
 Title: Create Directories for a Data Project
-Version: 0.1.1
+Version: 0.1.2
 Depends:
     R (>= 2.10)
 Authors@R: person("Brian", "Gulbis", email="brian.gulbis@gmail.com", role=c("aut","cre"))

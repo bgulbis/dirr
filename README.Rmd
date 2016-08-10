@@ -53,6 +53,7 @@ The following folders are created by `make_dirs`:
 * doc - manuscript and related documents
 * explore - exploratory notebooks and figures
 * figs - final figures for posters or manuscript
+* ref - reference articles for the project
 * report - notebook containing data analysis
 * src - R script files used to tidy, transform, and aggregate data into the final data set
 
