@@ -5,7 +5,7 @@ dirr
 Purpose
 -------
 
-The `dirr` package can be used to set up a data project with default folders. Additionally, utility functions to compress data files are provided.
+The `dirr` package can be used to set up a data project with default folders. Additionally, utility functions to compress data files and batch load/save Rds are provided.
 
 Installation
 ------------
