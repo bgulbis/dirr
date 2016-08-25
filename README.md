@@ -62,3 +62,21 @@ gzip_files()
 
 -   Use the `pattern` argument to specify only certain files for zipping
 -   Use `ungzip_files` to uncompress all data files
+
+### Batch read and save Rds files
+
+1.  Load the `dirr` package
+2.  Run the `save_rds` function to save all R objects in the Global Environment whose names match the regular expression passed to the `pattern` argument. The directory where the files are saved is specified by the `data.dir` argument
+3.  Use `get_rds` to load all files in the specified directory.
+
+``` r
+library(dirr)
+
+# save all objects that begin with "tidy"
+save_rds(data.dir = "data/tidy", pattern = "^tidy")
+
+# read all Rds files
+get_rds(data.dir = "data/tidy")
+```
+
+-   Currently, the `file.ext` argument should be left as default.
