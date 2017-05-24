@@ -12,6 +12,12 @@
 #'
 #' @export
 save_rds_s3 <- function(x, bucket, nm, s3_dir = "data/", encrypt = TRUE) {
+
+    if (!requireNamespace("aws.s3", quietly = TRUE)) {
+        # prompt user to install missing package
+        stop("The package aws.s3 is missing. Please install by running install.packages('aws.s3')")
+    }
+
     hdrs <- list()
     if (encrypt) hdrs <- list("x-amz-server-side-encryption" = "AES256")
 
