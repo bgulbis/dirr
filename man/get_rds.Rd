@@ -25,4 +25,3 @@ objects in the Global Environment.
 \seealso{
 \code{\link{readRDS}}
 }
-

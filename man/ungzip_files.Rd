@@ -24,4 +24,3 @@ is gzipped.
 \code{\link[R.utils]{gzip}}, \code{\link[base]{regex}} for regular
   expressions
 }
-

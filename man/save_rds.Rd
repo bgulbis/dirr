@@ -27,4 +27,3 @@ directory.
 \seealso{
 \code{\link{saveRDS}}
 }
-

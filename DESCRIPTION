@@ -1,7 +1,7 @@
 Package: dirr
 Type: Package
 Title: Create Directories for a Data Project
-Version: 0.2.0
+Version: 0.3.0
 Depends:
     R (>= 2.10)
 Authors@R: person("Brian", "Gulbis", email="brian.gulbis@gmail.com", role=c("aut","cre"))
@@ -14,4 +14,6 @@ Imports:
     purrr,
     R.utils,
     stringr
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
+Suggests: aws.s3
+Additional_repositories: http://cloudyr.github.io/drat

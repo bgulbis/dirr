@@ -26,4 +26,3 @@ not, it will compress the file using \code{\link[R.utils]{gzip}}.
 \code{\link[R.utils]{gzip}},
 \code{\link[base]{regex}} for regular expressions
 }
-
