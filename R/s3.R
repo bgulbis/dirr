@@ -34,6 +34,8 @@ save_rds_s3 <- function(x, bucket, nm, s3_dir = "data/", encrypt = TRUE) {
 #' @return An \code{R} object
 #'
 #' @seealso \code{\link[aws.s3]{s3readRDS}}
+#'
+#' @export
 get_rds_s3 <- function(bucket, s3_dir, file_ext = ".Rds") {
     files <- aws.s3::get_bucket_df(bucket)
     files <- dplyr::filter_(files, .dots = list(~stringr::str_detect(Key, s3_dir)))
