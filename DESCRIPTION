@@ -11,7 +11,7 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Imports:
-    aws.s3
+    aws.s3,
     purrr,
     R.utils,
     stringr
