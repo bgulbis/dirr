@@ -4,14 +4,15 @@
 \alias{save_rds_s3}
 \title{Save file as Rds on AWS S3}
 \usage{
-save_rds_s3(x, bucket, nm, s3_dir = "data/", encrypt = TRUE)
+save_rds_s3(files, nm, bucket, s3_dir = "data/", encrypt = TRUE)
 }
 \arguments{
-\item{x}{object to be saved, usually a data.frame}
+\item{files}{list of one or more data frames, each of which is to be
+converted to a separate Rds file}
+
+\item{nm}{character vector of names for each data frame}
 
 \item{bucket}{character string, bucket to save data to}
-
-\item{nm}{character string with name of object}
 
 \item{s3_dir}{character string, combined with nm to create an object key}
 
