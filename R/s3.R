@@ -4,28 +4,23 @@
 #' This function saves a data object as an Rds file on AWS S3. The access key id
 #' and secret access key must be set as environment variables to work.
 #'
-#' @param x object to be saved, usually a data.frame
+#' @param files list of one or more data frames, each of which is to be
+#'   converted to a separate Rds file
+#' @param nm character vector of names for each data frame
 #' @param bucket character string, bucket to save data to
-#' @param nm character string with name of object
 #' @param s3_dir character string, combined with nm to create an object key
 #' @param encrypt logical, default is to encrypt data
 #'
 #' @export
-save_rds_s3 <- function(x, bucket, nm, s3_dir = "data/", encrypt = TRUE) {
-    walk2(files,
-          mbo_files,
-          ~s3saveRDS(.x,
-                     object = paste0("data/raw/", .y, ".Rds"),
-                     bucket = bucket,
-                     headers = list("x-amz-server-side-encryption" = "AES256"))
-    )
+save_rds_s3 <- function(files, nm, bucket, s3_dir = "data/", encrypt = TRUE) {
+    hdrs <- list()
+    if (encrypt) hdrs <- list("x-amz-server-side-encryption" = "AES256")
 
-    # hdrs <- list()
-    # if (encrypt) hdrs <- list("x-amz-server-side-encryption" = "AES256")
-    #
-    # aws.s3::s3saveRDS(object = paste0(s3_dir, x, ".Rds"),
-    #                   bucket = bucket,
-    #                   headers = hdrs)
+    purrr::walk2(files, nm, ~aws.s3::s3saveRDS(.x,
+                                               object = paste0(s3_dir, .y, ".Rds"),
+                                               bucket = bucket,
+                                               headers = hdrs)
+    )
 }
 
 #' Read in RDS files from AWS S3
