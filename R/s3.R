@@ -12,12 +12,20 @@
 #'
 #' @export
 save_rds_s3 <- function(x, bucket, nm, s3_dir = "data/", encrypt = TRUE) {
-    hdrs <- list()
-    if (encrypt) hdrs <- list("x-amz-server-side-encryption" = "AES256")
+    walk2(files,
+          mbo_files,
+          ~s3saveRDS(.x,
+                     object = paste0("data/raw/", .y, ".Rds"),
+                     bucket = bucket,
+                     headers = list("x-amz-server-side-encryption" = "AES256"))
+    )
 
-    aws.s3::s3saveRDS(object = paste0(s3_dir, x, ".Rds"),
-                      bucket = bucket,
-                      headers = hdrs)
+    # hdrs <- list()
+    # if (encrypt) hdrs <- list("x-amz-server-side-encryption" = "AES256")
+    #
+    # aws.s3::s3saveRDS(object = paste0(s3_dir, x, ".Rds"),
+    #                   bucket = bucket,
+    #                   headers = hdrs)
 }
 
 #' Read in RDS files from AWS S3
