@@ -12,8 +12,8 @@ Encoding: UTF-8
 LazyData: true
 Imports:
     aws.s3,
+    dplyr
     purrr,
     R.utils,
     stringr,
-    dplyr
 RoxygenNote: 6.0.1
