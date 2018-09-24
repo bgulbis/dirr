@@ -13,14 +13,20 @@
 #'   files. Defaults to the \code{data/raw} directory.
 #' @param pattern An optional regular expression. Only file names which match
 #'   the regular expression will be compressed.
+#' @param recursive A boolean indicating whether to include subdirectories
 #'
 #' @seealso
 #' \code{\link[R.utils]{gzip}},
 #' \code{\link[base]{regex}} for regular expressions
 #'
 #' @export
-gzip_files <- function(dir.name = "data/raw", pattern = NULL) {
-    comp.files <- list.files(dir.name, pattern = pattern, full.names=TRUE)
+gzip_files <- function(dir.name = "data/raw", pattern = NULL, recursive = FALSE) {
+    comp.files <- list.files(
+        dir.name,
+        pattern = pattern,
+        full.names = TRUE,
+        recursive = recursive)
+
     lapply(comp.files, function(x)
         if (!R.utils::isGzipped(x)) R.utils::gzip(x, overwrite=TRUE)
     )
