@@ -68,31 +68,34 @@ get_rdata <- function(data.dir, file.ext = ".Rda") {
     files <- purrr::walk(raw, load, envir = .GlobalEnv)
 }
 
-#' Save data in Rda or Rdata files
+#' Save data in Rdata or Rda files
 #'
-#' \code{save_rdata} saves data in Rda or Rdata files
+#' \code{save_rdata} saves data in Rdata or Rda files
 #'
-#' This function saves all designated data frames in Rda (default) or Rdata
-#' files within a given directory.
+#' This function saves all designated data frames in Rdata or Rda
+#' files within a given directory. The data are converted to data.frames prior
+#' to saving which allows for direct import into products like Tableau.
 #'
 #' @param data.dir A character string with the name of the directory containing
 #'   the files
 #' @param pattern A regular expression indicating the objects to be saved
-#' @param file.ext An optional character string, defaults to .Rda
+#' @param file.ext An optional character string, defaults to .Rdata
 #'
 #' @return An \code{R} object
 #'
 #' @seealso \code{\link{save}}
 #'
 #' @export
-save_rdata <- function(data.dir, pattern, file.ext = ".Rda") {
+save_rdata <- function(data.dir, pattern, file.ext = ".Rdata") {
+    # convert to data.frame before saving
+    f <- function(x, d) {
+        y <- as.data.frame(get(x))
+        nm <- paste0(d, "/", x, ".Rda")
+        save(y, file = nm)
+    }
+
     to.save <- ls(.GlobalEnv, pattern = pattern)
-    purrr::walk(
-        to.save,
-        ~ save(
-            list = .x,
-            file = paste0(data.dir, "/", .x, file.ext)
-        )
-    )
+
+    purrr::walk(to.save, f, d = data.dir)
 }
 
