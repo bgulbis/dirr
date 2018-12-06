@@ -4,7 +4,7 @@
 \alias{gzip_files}
 \title{Compress data files}
 \usage{
-gzip_files(dir.name = "data/raw", pattern = NULL)
+gzip_files(dir.name = "data/raw", pattern = NULL, recursive = FALSE)
 }
 \arguments{
 \item{dir.name}{A string with the name of the directory containing the data
@@ -12,6 +12,8 @@ files. Defaults to the \code{data/raw} directory.}
 
 \item{pattern}{An optional regular expression. Only file names which match
 the regular expression will be compressed.}
+
+\item{recursive}{A boolean indicating whether to include subdirectories}
 }
 \description{
 \code{gzip_files} compresses all data files in a directory using gzip, if not

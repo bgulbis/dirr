@@ -47,3 +47,52 @@ save_rds <- function(data.dir, pattern, file.ext = ".Rds") {
     purrr::walk(to.save, ~ saveRDS(get(.x), paste0(data.dir, "/", .x, file.ext)))
 }
 
+#' Read in Rda or Rdata files
+#'
+#' \code{get_rdata} reads in all Rda or Rdata files from a directory
+#'
+#' This function reads in all Rda or Rdata files in a given directory and saves
+#' them as objects in the Global Environment.
+#'
+#' @param data.dir A character string with the name of the directory containing
+#'   the files
+#' @param file.ext An optional character string, defaults to .Rda
+#'
+#' @return An \code{R} object
+#'
+#' @seealso \code{\link{load}}
+#'
+#' @export
+get_rdata <- function(data.dir, file.ext = ".Rda") {
+    raw <- list.files(data.dir, file.ext, full.names = TRUE)
+    files <- purrr::walk(raw, load, envir = .GlobalEnv)
+}
+
+#' Save data in Rda or Rdata files
+#'
+#' \code{save_rdata} saves data in Rda or Rdata files
+#'
+#' This function saves all designated data frames in Rda (default) or Rdata
+#' files within a given directory.
+#'
+#' @param data.dir A character string with the name of the directory containing
+#'   the files
+#' @param pattern A regular expression indicating the objects to be saved
+#' @param file.ext An optional character string, defaults to .Rda
+#'
+#' @return An \code{R} object
+#'
+#' @seealso \code{\link{save}}
+#'
+#' @export
+save_rdata <- function(data.dir, pattern, file.ext = ".Rda") {
+    to.save <- ls(.GlobalEnv, pattern = pattern)
+    purrr::walk(
+        to.save,
+        ~ save(
+            list = .x,
+            file = paste0(data.dir, "/", .x, file.ext)
+        )
+    )
+}
+
