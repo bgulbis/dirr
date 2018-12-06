@@ -88,14 +88,13 @@ get_rdata <- function(data.dir, file.ext = ".Rda") {
 #' @export
 save_rdata <- function(data.dir, pattern, file.ext = ".Rdata") {
     # convert to data.frame before saving
-    f <- function(x, d) {
+    f <- function(x) {
         y <- as.data.frame(get(x))
-        nm <- paste0(d, "/", x, ".Rda")
+        nm <- paste0(data.dir, "/", x, file.ext)
         save(y, file = nm)
     }
 
     to.save <- ls(.GlobalEnv, pattern = pattern)
-
-    purrr::walk(to.save, f, d = data.dir)
+    purrr::walk(to.save, f)
 }
 
