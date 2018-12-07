@@ -72,24 +72,30 @@ get_rdata <- function(data.dir, file.ext = ".Rda") {
 #'
 #' \code{save_rdata} saves data in Rdata or Rda files
 #'
-#' This function saves all designated data frames in Rdata or Rda
-#' files within a given directory. The data are converted to data.frames prior
-#' to saving which allows for direct import into products like Tableau.
+#' This function saves all designated data frames in Rdata or Rda files within a
+#' given directory. The data are optionally converted to data.frames prior to
+#' saving which allows for direct import into products like Tableau.
 #'
 #' @param data.dir A character string with the name of the directory containing
 #'   the files
 #' @param pattern A regular expression indicating the objects to be saved
 #' @param file.ext An optional character string, defaults to .Rdata
+#' @param convert A boolean indicating if the data frame should be converted to
+#'   a data.frame before saving
 #'
 #' @return An \code{R} object
 #'
 #' @seealso \code{\link{save}}
 #'
 #' @export
-save_rdata <- function(data.dir, pattern, file.ext = ".Rdata") {
+save_rdata <- function(data.dir, pattern, file.ext = ".Rdata", convert = TRUE) {
     # convert to data.frame before saving
     f <- function(x) {
-        y <- as.data.frame(get(x))
+        if (convert) {
+            y <- as.data.frame(get(x))
+        } else {
+            y <- x
+        }
         nm <- paste0(data.dir, "/", x, file.ext)
         save(y, file = nm)
     }

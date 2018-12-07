@@ -4,7 +4,7 @@
 \alias{save_rdata}
 \title{Save data in Rdata or Rda files}
 \usage{
-save_rdata(data.dir, pattern, file.ext = ".Rdata")
+save_rdata(data.dir, pattern, file.ext = ".Rdata", convert = TRUE)
 }
 \arguments{
 \item{data.dir}{A character string with the name of the directory containing
@@ -13,6 +13,9 @@ the files}
 \item{pattern}{A regular expression indicating the objects to be saved}
 
 \item{file.ext}{An optional character string, defaults to .Rdata}
+
+\item{convert}{A boolean indicating if the data frame should be converted to
+a data.frame before saving}
 }
 \value{
 An \code{R} object
@@ -21,9 +24,9 @@ An \code{R} object
 \code{save_rdata} saves data in Rdata or Rda files
 }
 \details{
-This function saves all designated data frames in Rdata or Rda
-files within a given directory. The data are converted to data.frames prior
-to saving which allows for direct import into products like Tableau.
+This function saves all designated data frames in Rdata or Rda files within a
+given directory. The data are optionally converted to data.frames prior to
+saving which allows for direct import into products like Tableau.
 }
 \seealso{
 \code{\link{save}}
