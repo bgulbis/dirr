@@ -25,6 +25,33 @@ get_rds <- function(data.dir, file.ext = ".Rds") {
     list2env(files, .GlobalEnv)
 }
 
+#' Read in RDS files with similar name and combine into a data frame
+#'
+#' \code{get_rds_df} reads in all RDS files matching a pattern and combines into a
+#' single data frame
+#'
+#' This function reads in all RDS files in a given directory which match a
+#' pattern and combines them into a single data frame.
+#'
+#' @param data.dir A character string with the name of the directory containing
+#'   the RDS files
+#' @param pattern A regular expression indicating the objects to be read
+#' @param file.ext An optional character string, defaults to .Rds
+#'
+#' @return An \code{R} object
+#'
+#' @seealso \code{\link{readRDS}}
+#'
+#' @export
+get_rds_df <- function(data.dir, pattern, file.ext = ".Rds") {
+    data.dir %>%
+        list.files(
+            pattern = paste0(pattern, file.ext),
+            full.names = TRUE
+        ) %>%
+        purrr::map_df(readr::read_rds)
+}
+
 #' Save data in RDS files
 #'
 #' \code{save_rds} saves data in RDS files
@@ -35,6 +62,8 @@ get_rds <- function(data.dir, file.ext = ".Rds") {
 #' @param data.dir A character string with the name of the directory containing
 #'   the RDS files
 #' @param pattern A regular expression indicating the objects to be saved
+#' @param prefix An optional character string to prefix to the file name,
+#'   usually a date (yyyy-mm)
 #' @param file.ext An optional character string, defaults to .Rds
 #'
 #' @return An \code{R} object
@@ -42,9 +71,15 @@ get_rds <- function(data.dir, file.ext = ".Rds") {
 #' @seealso \code{\link{saveRDS}}
 #'
 #' @export
-save_rds <- function(data.dir, pattern, file.ext = ".Rds") {
+save_rds <- function(data.dir, pattern, prefix = "", file.ext = ".Rds") {
     to.save <- ls(.GlobalEnv, pattern = pattern)
-    purrr::walk(to.save, ~ saveRDS(get(.x), paste0(data.dir, "/", .x, file.ext)))
+    purrr::walk(
+        to.save,
+        ~ saveRDS(
+            get(.x),
+            paste0(data.dir, "/", prefix, .x, file.ext)
+        )
+    )
 }
 
 #' Read in Rda or Rdata files

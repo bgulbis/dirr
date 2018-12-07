@@ -4,13 +4,16 @@
 \alias{save_rds}
 \title{Save data in RDS files}
 \usage{
-save_rds(data.dir, pattern, file.ext = ".Rds")
+save_rds(data.dir, pattern, prefix = "", file.ext = ".Rds")
 }
 \arguments{
 \item{data.dir}{A character string with the name of the directory containing
 the RDS files}
 
 \item{pattern}{A regular expression indicating the objects to be saved}
+
+\item{prefix}{An optional character string to prefix to the file name,
+usually a date (yyyy-mm)}
 
 \item{file.ext}{An optional character string, defaults to .Rds}
 }

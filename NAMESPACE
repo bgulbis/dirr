@@ -2,6 +2,7 @@
 
 export(get_rdata)
 export(get_rds)
+export(get_rds_df)
 export(get_rds_s3)
 export(gzip_files)
 export(make_dirs)
