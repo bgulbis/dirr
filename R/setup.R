@@ -41,7 +41,8 @@ make_dirs <- function() {
         "report",
         "src",
         "irb",
-        "ref"
+        "ref",
+        "qry"
     )
 
     lapply(list_dirs, function(y) if (!dir.exists(y)) dir.create(y))
