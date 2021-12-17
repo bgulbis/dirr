@@ -1,7 +1,7 @@
 Package: dirr
 Type: Package
 Title: Create Directories for a Data Project
-Version: 0.3.3
+Version: 0.3.4
 Depends:
     R (>= 2.10)
 Authors@R: person("Brian", "Gulbis", email="brian.gulbis@gmail.com", role=c("aut","cre"))
@@ -11,9 +11,8 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Imports:
-    aws.s3,
     dplyr,
     purrr,
     R.utils,
     stringr,
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.2
